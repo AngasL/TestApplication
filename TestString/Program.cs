@@ -10,6 +10,7 @@ namespace TestString
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(7.5M);
         }
     }
 
