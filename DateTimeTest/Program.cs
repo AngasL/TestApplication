@@ -16,6 +16,8 @@ namespace DateTimeTest
 
             Console.WriteLine(dateTimeNow.Ticks);
             Console.WriteLine(addedDateTime.Ticks);
+
+            Console.WriteLine(DateTime.MaxValue.Ticks - 2 * dateTimeNow.Ticks);
         }
     }
 }

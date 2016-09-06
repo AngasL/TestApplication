@@ -10,17 +10,33 @@ namespace YieldReturn
     {
         static void Main(string[] args)
         {
-            var people = new People
-            {
-                Pencil = new List<string> { "pencile1", "pencile2"},
-                BallPointPen = new List<string> { "ballpointpen1","ballpointpen2"}
-            };
+            //var people = new People
+            //{
+            //    Pencil = new List<string> { "pencile1", "pencile2"},
+            //    BallPointPen = new List<string> { "ballpointpen1","ballpointpen2"}
+            //};
 
-            var pens = GetAllPens(people);
+            //var pens = GetAllPens(people);
 
-            foreach (var pen in pens)
+            //foreach (var pen in pens)
+            //{
+            //    Console.WriteLine(pen);
+            //}
+
+            Console.WriteLine(Guid.NewGuid());
+
+            var intArr = new int[] { 9, 8, 4, 7, 6, 2, 1 };
+            foreach (var item in intArr)
             {
-                Console.WriteLine(pen);
+                Console.Write(string.Format("{0} ,", item));
+            }
+
+            Console.WriteLine();
+
+            intArr = intArr.OrderBy(i => i).ToArray();
+            foreach (var item in intArr)
+            {
+                Console.Write(string.Format("{0} ,", item));
             }
         }
 

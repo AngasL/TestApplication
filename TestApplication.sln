@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Receive", "Receive\Receive.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeTest", "DateTimeTest\DateTimeTest.csproj", "{45394429-640A-45C1-8627-9F8C6D752380}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLTest", "DLLTest\DLLTest.csproj", "{7FC0ED1D-2F36-4C96-840F-205A799B5795}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBulkCopyDemo", "SqlBulkCopyDemo\SqlBulkCopyDemo.csproj", "{1F0F707D-1852-4E7A-A615-908F1A99A690}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +99,14 @@ Global
 		{45394429-640A-45C1-8627-9F8C6D752380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45394429-640A-45C1-8627-9F8C6D752380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45394429-640A-45C1-8627-9F8C6D752380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC0ED1D-2F36-4C96-840F-205A799B5795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC0ED1D-2F36-4C96-840F-205A799B5795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC0ED1D-2F36-4C96-840F-205A799B5795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC0ED1D-2F36-4C96-840F-205A799B5795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0F707D-1852-4E7A-A615-908F1A99A690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0F707D-1852-4E7A-A615-908F1A99A690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0F707D-1852-4E7A-A615-908F1A99A690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0F707D-1852-4E7A-A615-908F1A99A690}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
