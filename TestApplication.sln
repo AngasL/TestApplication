@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLTest", "DLLTest\DLLTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBulkCopyDemo", "SqlBulkCopyDemo\SqlBulkCopyDemo.csproj", "{1F0F707D-1852-4E7A-A615-908F1A99A690}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplication", "MvcApplication\MvcApplication.csproj", "{4F4EDC50-C8C3-47B4-BBA3-5B633CB7C2A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,10 @@ Global
 		{1F0F707D-1852-4E7A-A615-908F1A99A690}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F0F707D-1852-4E7A-A615-908F1A99A690}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F0F707D-1852-4E7A-A615-908F1A99A690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4EDC50-C8C3-47B4-BBA3-5B633CB7C2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4EDC50-C8C3-47B4-BBA3-5B633CB7C2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4EDC50-C8C3-47B4-BBA3-5B633CB7C2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4EDC50-C8C3-47B4-BBA3-5B633CB7C2A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
