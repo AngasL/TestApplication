@@ -47,6 +47,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryCatchFinally", "TryCatch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerTest", "TimerTest\TimerTest.csproj", "{878B1A4C-325B-4EE8-94D4-C0597E982455}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MongoDemo", "MongoDemo", "{A2D23C02-0B88-4529-9827-ECAD65C31B07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoTest", "MongoTest\MongoTest.csproj", "{F5F3B14F-C9D4-438F-97AF-3B278ECBEDB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto", "Crypto\Crypto.csproj", "{74472D92-5850-4E06-89AD-6175C262B6C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +143,14 @@ Global
 		{878B1A4C-325B-4EE8-94D4-C0597E982455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{878B1A4C-325B-4EE8-94D4-C0597E982455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{878B1A4C-325B-4EE8-94D4-C0597E982455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F3B14F-C9D4-438F-97AF-3B278ECBEDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F3B14F-C9D4-438F-97AF-3B278ECBEDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F3B14F-C9D4-438F-97AF-3B278ECBEDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F3B14F-C9D4-438F-97AF-3B278ECBEDB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74472D92-5850-4E06-89AD-6175C262B6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74472D92-5850-4E06-89AD-6175C262B6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74472D92-5850-4E06-89AD-6175C262B6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74472D92-5850-4E06-89AD-6175C262B6C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -144,5 +158,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FA61F62C-0D9D-4AFC-8B5A-9050FB886CF8} = {17DB8298-5552-4319-A9C5-BA6AD7D42B14}
 		{8A036785-9EBA-4AD1-B1CE-244D560A6D44} = {17DB8298-5552-4319-A9C5-BA6AD7D42B14}
+		{F5F3B14F-C9D4-438F-97AF-3B278ECBEDB0} = {A2D23C02-0B88-4529-9827-ECAD65C31B07}
 	EndGlobalSection
 EndGlobal
