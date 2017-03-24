@@ -31,13 +31,18 @@ namespace DateTimeTest
             //Console.WriteLine(result);
             //Console.WriteLine(hashCode);
 
-            double expectedValue = 1 / 2;
-            if (expectedValue > 0)
-            {
-                expectedValue = expectedValue + 0.5;
-            }
+            //double expectedValue = 1 / 2;
+            //if (expectedValue > 0)
+            //{
+            //    expectedValue = expectedValue + 0.5;
+            //}
 
-            Console.WriteLine(expectedValue);
+            //Console.WriteLine(expectedValue);
+
+            var list = new List<string>();
+
+            var result = list.Where(l => l.Contains("123")).FirstOrDefault();
+            Console.WriteLine(result);
 
             Console.Read();
         }
@@ -45,14 +50,22 @@ namespace DateTimeTest
         private delegate bool IsAssertException(Exception exc);
         
 
-        private static int Method(int first = 1, int second = 2, Func<Exception, bool> Sum = new IsAssertException(exc=>exc is AssertException))
-        {
-            return Sum(first, second);
-        }
+        //private static int Method(int first = 1, int second = 2, Func<Exception, bool> Sum = new IsAssertException(exc=>exc is AssertException))
+        //{
+        //    return Sum(first, second);
+        //}
 
         private static int Add(int para1, int para2)
         {
             return para1 + para2;
         }
+
+
+    }
+
+    public class People
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
     }
 }
