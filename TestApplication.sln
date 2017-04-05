@@ -61,6 +61,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullCheck", "NullCheck\Null
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTranslation", "GoogleTranslation\GoogleTranslation.csproj", "{79792B23-27B4-44FC-A7DC-A36AB96F2A6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSIXProject1", "VSIXProject1\VSIXProject1.csproj", "{7461347E-B587-4726-8F3F-F4920A63F158}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +173,10 @@ Global
 		{79792B23-27B4-44FC-A7DC-A36AB96F2A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79792B23-27B4-44FC-A7DC-A36AB96F2A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79792B23-27B4-44FC-A7DC-A36AB96F2A6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7461347E-B587-4726-8F3F-F4920A63F158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7461347E-B587-4726-8F3F-F4920A63F158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7461347E-B587-4726-8F3F-F4920A63F158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7461347E-B587-4726-8F3F-F4920A63F158}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
