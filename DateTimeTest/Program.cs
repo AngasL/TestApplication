@@ -42,6 +42,8 @@ namespace DateTimeTest
             var list = new List<string>();
 
             var result = list.Where(l => l.Contains("123")).FirstOrDefault();
+            var currentDate = DateTime.Now;
+            Console.WriteLine(currentDate.ToShortTimeString());
             Console.WriteLine(result);
 
             Console.Read();
