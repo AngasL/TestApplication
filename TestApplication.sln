@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestString", "TestString\TestString.csproj", "{C3F1F8F9-EBB9-46A8-94DB-F1644D23DEA5}"
 EndProject
@@ -67,13 +67,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoqTest", "MoqTest\MoqTest.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetCore", "NetCore", "{A339E3E0-92AC-4183-8266-961AB3AFB62B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreWebApp", "NetCoreWebApp\NetCoreWebApp.csproj", "{621ACC7D-4F3D-46D1-B8E3-F4B72B070AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreWebApp", "NetCoreWebApp\NetCoreWebApp.csproj", "{621ACC7D-4F3D-46D1-B8E3-F4B72B070AD6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedTest", "SpeedTest\SpeedTest.csproj", "{57C0759C-CF63-4078-9353-D12C504D53DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService", "WindowsService\WindowsService.csproj", "{9CB204E6-71C4-4AD6-A2B8-FB036FB80E29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForkJoinTest", "ForkJoinTest\ForkJoinTest.csproj", "{71BBB1C7-8BFE-4411-AD94-A924386ADF78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicTest", "DynamicTest\DynamicTest.csproj", "{E55A1666-BF49-44EA-A528-04D0CEB89AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlDeserialize", "XmlDeserialize\XmlDeserialize.csproj", "{6A7E3EAB-A87F-43DC-84F4-0DF38609010D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigletonTest", "SigletonTest\SigletonTest.csproj", "{415ECF85-51C0-4465-89D6-AF491DE1E12B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regex", "Regex\Regex.csproj", "{63299FAB-E08B-4EDC-B435-14FA9A94217F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -209,6 +217,22 @@ Global
 		{71BBB1C7-8BFE-4411-AD94-A924386ADF78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71BBB1C7-8BFE-4411-AD94-A924386ADF78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71BBB1C7-8BFE-4411-AD94-A924386ADF78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E55A1666-BF49-44EA-A528-04D0CEB89AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E55A1666-BF49-44EA-A528-04D0CEB89AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E55A1666-BF49-44EA-A528-04D0CEB89AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E55A1666-BF49-44EA-A528-04D0CEB89AD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7E3EAB-A87F-43DC-84F4-0DF38609010D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7E3EAB-A87F-43DC-84F4-0DF38609010D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7E3EAB-A87F-43DC-84F4-0DF38609010D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7E3EAB-A87F-43DC-84F4-0DF38609010D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{415ECF85-51C0-4465-89D6-AF491DE1E12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{415ECF85-51C0-4465-89D6-AF491DE1E12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{415ECF85-51C0-4465-89D6-AF491DE1E12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{415ECF85-51C0-4465-89D6-AF491DE1E12B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63299FAB-E08B-4EDC-B435-14FA9A94217F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63299FAB-E08B-4EDC-B435-14FA9A94217F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63299FAB-E08B-4EDC-B435-14FA9A94217F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63299FAB-E08B-4EDC-B435-14FA9A94217F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -219,5 +243,8 @@ Global
 		{F5F3B14F-C9D4-438F-97AF-3B278ECBEDB0} = {A2D23C02-0B88-4529-9827-ECAD65C31B07}
 		{195300D3-F84A-474B-BC5A-5DEB9FB08FF1} = {E4133659-D9E9-4A5E-8C60-C84A2F00E463}
 		{621ACC7D-4F3D-46D1-B8E3-F4B72B070AD6} = {A339E3E0-92AC-4183-8266-961AB3AFB62B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCE1C588-E9D5-4EFD-8251-18795172CD20}
 	EndGlobalSection
 EndGlobal

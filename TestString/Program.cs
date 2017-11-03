@@ -10,6 +10,7 @@ namespace TestString
     {
         static void Main(string[] args)
         {
+            /*
             //Console.WriteLine(7.5M);
             var users = new List<User>
             {
@@ -25,7 +26,15 @@ namespace TestString
                 .GroupBy(u => u.Group.Split('+')[0])
                 .ToDictionary(g => g.Key, g => g.AsEnumerable())
                 .OrderBy(d => d.Key);
+                */
 
+            var candidate = "<input type=\"input\" name=\"Workflow.InterviewPrepare.LogicLoad.JavaFunction.className\" value=\"com.speedlegal.workflow.demofunction.load.ProtectValues\" />";
+            var source = "abc<input type=\"input\" name=\"Workflow.InterviewPrepare.LogicLoad.JavaFunction.className\" value=\"com.speedlegal.workflow.demofunction.load.ProtectValues\" />efg";
+
+
+            var result = source.Remove(source.IndexOf(candidate), candidate.Length);
+
+            Console.WriteLine(result);
             Console.ReadKey();
         }
     }

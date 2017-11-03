@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b106d86666dd4c2987fad3b8583ca8c7" Name="Diagram1">
+        <EntityTypeShape EntityType="FirmManager_DevModel.ApplicationPackage" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.ApplicationPackageEntitlementLog" Width="1.5" PointX="8.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.ApplicationRole" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.ApplicationRoleEntitlementLog" Width="1.5" PointX="10.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.ApplicationUser" Width="1.5" PointX="6" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.ApplicationUserFeature" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.ApplicationUserFeatureLog" Width="1.5" PointX="10.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.ApplicationUserLog" Width="1.5" PointX="12.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.BillingCodeSet" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.BillingCodeSetLog" Width="1.5" PointX="12.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.CodeType" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.CodeValue" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.Country" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.DigestSetting" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.DigestSettingLog" Width="1.5" PointX="13.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.Entitlement" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.EntitlementLog" Width="1.5" PointX="14.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.EntitlementPermission" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.Firm" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.FirmLog" Width="1.5" PointX="14.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.Preference" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.PreferenceLog" Width="1.5" PointX="10.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.PreferenceValue" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.PreferenceValueLog" Width="1.5" PointX="15.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.RegionSetting" Width="1.5" PointX="15.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.RegionSettingLog" Width="1.5" PointX="16.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.RolePermissionLog" Width="1.5" PointX="16.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.State" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.sysdiagrams" Width="1.5" PointX="12.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.UserPreferenceValue" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.UserPreferenceValueLog" Width="1.5" PointX="14.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.UserRole" Width="1.5" PointX="11.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.UserRoleLog" Width="1.5" PointX="16.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.VersionFeature" Width="1.5" PointX="17.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.VersionRelease" Width="1.5" PointX="17.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.WamApplicationUser" Width="1.5" PointX="9" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.WamFirm" Width="1.5" PointX="6.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FirmManager_DevModel.VersionInfo" Width="1.5" PointX="18.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="FirmManager_DevModel.FKApplRoleFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKUserRoleRoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FK_ApplicationUser_UserStatus_CodeValue_CodeValueID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FK_DigestSetting_UserID_ApplicationUser_UserID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKUserPrefValueUserID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKUserRegistrationFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKUserRoleUserID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKCodeValueCodeTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKPreferenceLookupCode" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKStateCountryID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FK_DigestSetting_FirmID_Firm_FirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKPrefValueFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKUserPrefValueFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKUserRoleFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKPrefValuePreferenceID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKUserPrefValuePreferenceID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.FKWamApplicationUserFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.ApplicationPackageEntitlement" ManuallyRouted="false" />
+        <AssociationConnector Association="FirmManager_DevModel.ApplicationRoleEntitlement" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

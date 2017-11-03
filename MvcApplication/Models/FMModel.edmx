@@ -1,0 +1,2659 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FirmManager_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicationPackage">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationPackageEntitlement">
+          <Key>
+            <PropertyRef Name="PackageID" />
+            <PropertyRef Name="EntitlementID" />
+          </Key>
+          <Property Name="PackageID" Type="smallint" Nullable="false" />
+          <Property Name="EntitlementID" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationPackageEntitlementLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="PackageID" Type="smallint" Nullable="false" />
+          <Property Name="EntitlementID" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="FirmID" Type="int" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="RoleDisplayName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SequenceNumber" Type="smallint" Nullable="false" />
+          <Property Name="ApplicationID" Type="smallint" Nullable="false" />
+          <Property Name="UserDefinedIndicator" Type="bit" Nullable="false" />
+          <Property Name="FirmAdminIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationRoleEntitlement">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="EntitlementID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="EntitlementID" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationRoleEntitlementLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="EntitlementID" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="LNASUserID" Type="varchar" MaxLength="40" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="120" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="120" />
+          <Property Name="UserStatus" Type="int" Nullable="false" />
+          <Property Name="SID" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="60" />
+          <Property Name="WamUserPermIdUrn" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="ApplicationUserFeature">
+          <Key>
+            <PropertyRef Name="ApplicationUserFeatureID" />
+          </Key>
+          <Property Name="ApplicationUserFeatureID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicationUserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FeatureID" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUserFeatureLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="ApplicationUserFeatureID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicationUserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FeatureID" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUserLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="LNASUserID" Type="varchar" MaxLength="40" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="120" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="120" />
+          <Property Name="UserStatus" Type="int" />
+          <Property Name="SID" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="60" />
+          <Property Name="WamUserPermIdUrn" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="BillingCodeSet">
+          <Key>
+            <PropertyRef Name="BillingCodeSetID" />
+          </Key>
+          <Property Name="BillingCodeSetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BillingCode" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="BillingCodeTypeCode" Type="int" Nullable="false" />
+          <Property Name="BillingCodeDesc" Type="nvarchar(max)" />
+          <Property Name="BillingTypeCode" Type="int" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ActiveIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BillingCodeSetLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="BillingCodeSetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BillingCode" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="BillingCodeTypeCode" Type="int" Nullable="false" />
+          <Property Name="BillingCodeDesc" Type="nvarchar(max)" />
+          <Property Name="BillingTypeCode" Type="int" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ActiveIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodeType">
+          <Key>
+            <PropertyRef Name="CodeTypeID" />
+          </Key>
+          <Property Name="CodeTypeID" Type="smallint" Nullable="false" />
+          <Property Name="CodeTypeName" Type="varchar" MaxLength="30" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodeValue">
+          <Key>
+            <PropertyRef Name="CodeValueID" />
+          </Key>
+          <Property Name="CodeValueID" Type="int" Nullable="false" />
+          <Property Name="CodeTypeID" Type="smallint" Nullable="false" />
+          <Property Name="CodeValueName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CodeValueDisplayName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ConstantLookupValue" Type="varchar" MaxLength="100" />
+          <Property Name="SequenceNumber" Type="smallint" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="smallint" Nullable="false" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryDisplayName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DigestSetting">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="IsEmailEnabled" Type="bit" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HasSubscribedToTasksDue" Type="bit" Nullable="false" />
+          <Property Name="HasSubscribedToEvents" Type="bit" Nullable="false" />
+          <Property Name="HasSubscribedToMatterOverBudget" Type="bit" Nullable="false" />
+          <Property Name="TimeZone" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LastRunMade" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="NextRunNeeded" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="FrequencyType" Type="int" Nullable="false" />
+          <Property Name="DaysOfWeek" Type="int" Nullable="false" />
+          <Property Name="NotificationTime" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="DigestSettingLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="LogTypeCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="IsEmailEnabled" Type="bit" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HasSubscribedToTasksDue" Type="bit" Nullable="false" />
+          <Property Name="HasSubscribedToEvents" Type="bit" Nullable="false" />
+          <Property Name="HasSubscribedToMatterOverBudget" Type="bit" Nullable="false" />
+          <Property Name="TimeZone" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LastRunMade" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="NextRunNeeded" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FrequencyType" Type="int" Nullable="false" />
+          <Property Name="DaysOfWeek" Type="int" Nullable="false" />
+          <Property Name="NotificationTime" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Entitlement">
+          <Key>
+            <PropertyRef Name="EntitlementID" />
+          </Key>
+          <Property Name="EntitlementID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Entitlement" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntitlementLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="EntitlementID" Type="smallint" Nullable="false" />
+          <Property Name="Entitlement" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntitlementPermission">
+          <Key>
+            <PropertyRef Name="EntitlementID" />
+            <PropertyRef Name="CorePermissionID" />
+          </Key>
+          <Property Name="EntitlementID" Type="smallint" Nullable="false" />
+          <Property Name="CorePermissionID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccessLevel" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="FirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LNASFirmID" Type="varchar" MaxLength="40" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="255" />
+          <Property Name="Website" Type="nvarchar" MaxLength="255" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="60" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="BillingAccountId" Type="nvarchar" MaxLength="255" />
+          <Property Name="PromoCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrialEndDate" Type="datetime" />
+          <Property Name="ReferralSource" Type="nvarchar" MaxLength="255" />
+          <Property Name="CountryCode" Type="char" MaxLength="2" />
+          <Property Name="Locale" Type="char" MaxLength="5" />
+          <Property Name="ExtendedInfo" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="FirmLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="LNASFirmID" Type="varchar" MaxLength="40" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="255" />
+          <Property Name="Website" Type="nvarchar" MaxLength="255" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="OrderNumber" Type="nvarchar" MaxLength="60" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="BillingAccountId" Type="nvarchar" MaxLength="255" />
+          <Property Name="PromoCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrialEndDate" Type="datetime" />
+          <Property Name="ReferralSource" Type="nvarchar" MaxLength="255" />
+          <Property Name="CountryCode" Type="char" MaxLength="2" />
+          <Property Name="Locale" Type="char" MaxLength="5" />
+          <Property Name="ExtendedInfo" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Preference">
+          <Key>
+            <PropertyRef Name="PreferenceID" />
+          </Key>
+          <Property Name="PreferenceID" Type="int" Nullable="false" />
+          <Property Name="PreferenceName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PreferenceLookupCode" Type="smallint" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreferenceLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="PreferenceID" Type="int" Nullable="false" />
+          <Property Name="PreferenceName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PreferenceLookupCode" Type="smallint" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreferenceValue">
+          <Key>
+            <PropertyRef Name="PreferenceValueID" />
+          </Key>
+          <Property Name="PreferenceValueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" />
+          <Property Name="PreferenceID" Type="int" Nullable="false" />
+          <Property Name="SequenceNumber" Type="smallint" Nullable="false" />
+          <Property Name="PreferenceValue" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreferenceValueLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="PreferenceValueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" />
+          <Property Name="PreferenceID" Type="int" Nullable="false" />
+          <Property Name="PreferenceValue" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="SequenceNumber" Type="smallint" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegionSetting">
+          <Key>
+            <PropertyRef Name="SettingKey" />
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="SettingKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryCode" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="SettingValue" Type="nvarchar" MaxLength="1028" />
+        </EntityType>
+        <EntityType Name="RegionSettingLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="SettingKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryCode" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="SettingValue" Type="nvarchar" MaxLength="1028" />
+        </EntityType>
+        <EntityType Name="RolePermissionLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="PermissionID" Type="int" Nullable="false" />
+          <Property Name="FirmID" Type="int" />
+          <Property Name="AccessValue" Type="smallint" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="smallint" Nullable="false" />
+          <Property Name="StateCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="StateDisplayName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryID" Type="smallint" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserPreferenceValue">
+          <Key>
+            <PropertyRef Name="UserPreferenceID" />
+          </Key>
+          <Property Name="UserPreferenceID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="PreferenceID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SequenceNumber" Type="smallint" Nullable="false" />
+          <Property Name="PreferenceValue" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ApplicationID" Type="smallint" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="PreferenceKey" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="UserPreferenceValueLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="UserPreferenceID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreferenceID" Type="int" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="PreferenceValue" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="SequenceNumber" Type="smallint" Nullable="false" />
+          <Property Name="ApplicationID" Type="smallint" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoleLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="LogTypeCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VersionFeature">
+          <Key>
+            <PropertyRef Name="VersionFeatureID" />
+          </Key>
+          <Property Name="VersionFeatureID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReleaseNumber" Type="int" Nullable="false" />
+          <Property Name="FeatureTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="FeatureDescription" Type="nvarchar(max)" />
+          <Property Name="FeaturePath" Type="nvarchar" MaxLength="512" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="LinkTitle" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FirmManager_Dev.dbo.VersionInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="bigint" Nullable="false" />
+          <Property Name="AppliedOn" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="VersionRelease">
+          <Key>
+            <PropertyRef Name="VersionReleaseID" />
+          </Key>
+          <Property Name="VersionReleaseID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReleaseNumber" Type="int" Nullable="false" />
+          <Property Name="ReleaseTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="ReleaseNotes" Type="nvarchar(max)" />
+          <Property Name="CurrentRelease" Type="bit" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WamApplicationUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="WamUserPermId" Type="varchar" MaxLength="40" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="120" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="120" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserStatus" Type="int" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WamFirm">
+          <Key>
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="FirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WamCustomerId" Type="varchar" MaxLength="40" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="40" />
+          <Property Name="RowChangeTimestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ApplicationPackageEntitlement_EntitlementID_Entitlement_EntitlementID">
+          <End Role="Entitlement" Type="Self.Entitlement" Multiplicity="1" />
+          <End Role="ApplicationPackageEntitlement" Type="Self.ApplicationPackageEntitlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entitlement">
+              <PropertyRef Name="EntitlementID" />
+            </Principal>
+            <Dependent Role="ApplicationPackageEntitlement">
+              <PropertyRef Name="EntitlementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationPackageEntitlement_PackageID_ApplicationPackage_PackageID">
+          <End Role="ApplicationPackage" Type="Self.ApplicationPackage" Multiplicity="1" />
+          <End Role="ApplicationPackageEntitlement" Type="Self.ApplicationPackageEntitlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationPackage">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="ApplicationPackageEntitlement">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationRoleEntitlement_EntitlementID_Entitlement_EntitlementID">
+          <End Role="Entitlement" Type="Self.Entitlement" Multiplicity="1" />
+          <End Role="ApplicationRoleEntitlement" Type="Self.ApplicationRoleEntitlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entitlement">
+              <PropertyRef Name="EntitlementID" />
+            </Principal>
+            <Dependent Role="ApplicationRoleEntitlement">
+              <PropertyRef Name="EntitlementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationRoleEntitlement_RoleID_ApplicationRole_RoleID">
+          <End Role="ApplicationRole" Type="Self.ApplicationRole" Multiplicity="1" />
+          <End Role="ApplicationRoleEntitlement" Type="Self.ApplicationRoleEntitlement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="ApplicationRoleEntitlement">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationUser_UserStatus_CodeValue_CodeValueID">
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeValue">
+              <PropertyRef Name="CodeValueID" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="UserStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="ApplicationUserFeature" Type="Self.ApplicationUserFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ApplicationUserFeature">
+              <PropertyRef Name="ApplicationUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID">
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="1" />
+          <End Role="BillingCodeSet" Type="Self.BillingCodeSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeValue">
+              <PropertyRef Name="CodeValueID" />
+            </Principal>
+            <Dependent Role="BillingCodeSet">
+              <PropertyRef Name="BillingCodeTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID">
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="1" />
+          <End Role="BillingCodeSet" Type="Self.BillingCodeSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeValue">
+              <PropertyRef Name="CodeValueID" />
+            </Principal>
+            <Dependent Role="BillingCodeSet">
+              <PropertyRef Name="BillingTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DigestSetting_FirmID_Firm_FirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="DigestSetting" Type="Self.DigestSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="DigestSetting">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DigestSetting_UserID_ApplicationUser_UserID">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="DigestSetting" Type="Self.DigestSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="DigestSetting">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID">
+          <End Role="Entitlement" Type="Self.Entitlement" Multiplicity="1" />
+          <End Role="EntitlementPermission" Type="Self.EntitlementPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entitlement">
+              <PropertyRef Name="EntitlementID" />
+            </Principal>
+            <Dependent Role="EntitlementPermission">
+              <PropertyRef Name="EntitlementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_VersionFeature_ReleaseNumber_VersionRelease_ReleaseNumber' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_VersionFeature_ReleaseNumber_VersionRelease_ReleaseNumber" />-->
+        <Association Name="FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID">
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="1" />
+          <End Role="WamApplicationUser" Type="Self.WamApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeValue">
+              <PropertyRef Name="CodeValueID" />
+            </Principal>
+            <Dependent Role="WamApplicationUser">
+              <PropertyRef Name="UserStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKApplRoleFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+          <End Role="ApplicationRole" Type="Self.ApplicationRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="ApplicationRole">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKCodeValueCodeTypeID">
+          <End Role="CodeType" Type="Self.CodeType" Multiplicity="1" />
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeType">
+              <PropertyRef Name="CodeTypeID" />
+            </Principal>
+            <Dependent Role="CodeValue">
+              <PropertyRef Name="CodeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPreferenceLookupCode">
+          <End Role="CodeType" Type="Self.CodeType" Multiplicity="0..1" />
+          <End Role="Preference" Type="Self.Preference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeType">
+              <PropertyRef Name="CodeTypeID" />
+            </Principal>
+            <Dependent Role="Preference">
+              <PropertyRef Name="PreferenceLookupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPrefValueFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+          <End Role="PreferenceValue" Type="Self.PreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="PreferenceValue">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPrefValuePreferenceID">
+          <End Role="Preference" Type="Self.Preference" Multiplicity="1" />
+          <End Role="PreferenceValue" Type="Self.PreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preference">
+              <PropertyRef Name="PreferenceID" />
+            </Principal>
+            <Dependent Role="PreferenceValue">
+              <PropertyRef Name="PreferenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKStateCountryID">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserPrefValueFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="UserPreferenceValue" Type="Self.UserPreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="UserPreferenceValue">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserPrefValuePreferenceID">
+          <End Role="Preference" Type="Self.Preference" Multiplicity="1" />
+          <End Role="UserPreferenceValue" Type="Self.UserPreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preference">
+              <PropertyRef Name="PreferenceID" />
+            </Principal>
+            <Dependent Role="UserPreferenceValue">
+              <PropertyRef Name="PreferenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserPrefValueUserID">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="UserPreferenceValue" Type="Self.UserPreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserPreferenceValue">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserRegistrationFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserRoleFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserRoleRoleID">
+          <End Role="ApplicationRole" Type="Self.ApplicationRole" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserRoleUserID">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKWamApplicationUserFirmID">
+          <End Role="WamFirm" Type="Self.WamFirm" Multiplicity="1" />
+          <End Role="WamApplicationUser" Type="Self.WamApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WamFirm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="WamApplicationUser">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FirmManager_DevModelStoreContainer">
+          <EntitySet Name="ApplicationPackage" EntityType="Self.ApplicationPackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationPackageEntitlement" EntityType="Self.ApplicationPackageEntitlement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationPackageEntitlementLog" EntityType="Self.ApplicationPackageEntitlementLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationRole" EntityType="Self.ApplicationRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationRoleEntitlement" EntityType="Self.ApplicationRoleEntitlement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationRoleEntitlementLog" EntityType="Self.ApplicationRoleEntitlementLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUser" EntityType="Self.ApplicationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUserFeature" EntityType="Self.ApplicationUserFeature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUserFeatureLog" EntityType="Self.ApplicationUserFeatureLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUserLog" EntityType="Self.ApplicationUserLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillingCodeSet" EntityType="Self.BillingCodeSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillingCodeSetLog" EntityType="Self.BillingCodeSetLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodeType" EntityType="Self.CodeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodeValue" EntityType="Self.CodeValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DigestSetting" EntityType="Self.DigestSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DigestSettingLog" EntityType="Self.DigestSettingLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entitlement" EntityType="Self.Entitlement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntitlementLog" EntityType="Self.EntitlementLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntitlementPermission" EntityType="Self.EntitlementPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Firm" EntityType="Self.Firm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FirmLog" EntityType="Self.FirmLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preference" EntityType="Self.Preference" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreferenceLog" EntityType="Self.PreferenceLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreferenceValue" EntityType="Self.PreferenceValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreferenceValueLog" EntityType="Self.PreferenceValueLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegionSetting" EntityType="Self.RegionSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegionSettingLog" EntityType="Self.RegionSettingLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolePermissionLog" EntityType="Self.RolePermissionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPreferenceValue" EntityType="Self.UserPreferenceValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPreferenceValueLog" EntityType="Self.UserPreferenceValueLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoleLog" EntityType="Self.UserRoleLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VersionFeature" EntityType="Self.VersionFeature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VersionRelease" EntityType="Self.VersionRelease" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WamApplicationUser" EntityType="Self.WamApplicationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WamFirm" EntityType="Self.WamFirm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VersionInfo].[Version] AS [Version], 
+    [VersionInfo].[AppliedOn] AS [AppliedOn], 
+    [VersionInfo].[Description] AS [Description]
+    FROM [dbo].[VersionInfo] AS [VersionInfo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ApplicationPackageEntitlement_EntitlementID_Entitlement_EntitlementID" Association="Self.FK_ApplicationPackageEntitlement_EntitlementID_Entitlement_EntitlementID">
+            <End Role="Entitlement" EntitySet="Entitlement" />
+            <End Role="ApplicationPackageEntitlement" EntitySet="ApplicationPackageEntitlement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationPackageEntitlement_PackageID_ApplicationPackage_PackageID" Association="Self.FK_ApplicationPackageEntitlement_PackageID_ApplicationPackage_PackageID">
+            <End Role="ApplicationPackage" EntitySet="ApplicationPackage" />
+            <End Role="ApplicationPackageEntitlement" EntitySet="ApplicationPackageEntitlement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationRoleEntitlement_EntitlementID_Entitlement_EntitlementID" Association="Self.FK_ApplicationRoleEntitlement_EntitlementID_Entitlement_EntitlementID">
+            <End Role="Entitlement" EntitySet="Entitlement" />
+            <End Role="ApplicationRoleEntitlement" EntitySet="ApplicationRoleEntitlement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationRoleEntitlement_RoleID_ApplicationRole_RoleID" Association="Self.FK_ApplicationRoleEntitlement_RoleID_ApplicationRole_RoleID">
+            <End Role="ApplicationRole" EntitySet="ApplicationRole" />
+            <End Role="ApplicationRoleEntitlement" EntitySet="ApplicationRoleEntitlement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationUser_UserStatus_CodeValue_CodeValueID" Association="Self.FK_ApplicationUser_UserStatus_CodeValue_CodeValueID">
+            <End Role="CodeValue" EntitySet="CodeValue" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID" Association="Self.FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="ApplicationUserFeature" EntitySet="ApplicationUserFeature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID" Association="Self.FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID">
+            <End Role="CodeValue" EntitySet="CodeValue" />
+            <End Role="BillingCodeSet" EntitySet="BillingCodeSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID" Association="Self.FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID">
+            <End Role="CodeValue" EntitySet="CodeValue" />
+            <End Role="BillingCodeSet" EntitySet="BillingCodeSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DigestSetting_FirmID_Firm_FirmID" Association="Self.FK_DigestSetting_FirmID_Firm_FirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="DigestSetting" EntitySet="DigestSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DigestSetting_UserID_ApplicationUser_UserID" Association="Self.FK_DigestSetting_UserID_ApplicationUser_UserID">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="DigestSetting" EntitySet="DigestSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID" Association="Self.FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID">
+            <End Role="Entitlement" EntitySet="Entitlement" />
+            <End Role="EntitlementPermission" EntitySet="EntitlementPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID" Association="Self.FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID">
+            <End Role="CodeValue" EntitySet="CodeValue" />
+            <End Role="WamApplicationUser" EntitySet="WamApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FKApplRoleFirmID" Association="Self.FKApplRoleFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="ApplicationRole" EntitySet="ApplicationRole" />
+          </AssociationSet>
+          <AssociationSet Name="FKCodeValueCodeTypeID" Association="Self.FKCodeValueCodeTypeID">
+            <End Role="CodeType" EntitySet="CodeType" />
+            <End Role="CodeValue" EntitySet="CodeValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKPreferenceLookupCode" Association="Self.FKPreferenceLookupCode">
+            <End Role="CodeType" EntitySet="CodeType" />
+            <End Role="Preference" EntitySet="Preference" />
+          </AssociationSet>
+          <AssociationSet Name="FKPrefValueFirmID" Association="Self.FKPrefValueFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="PreferenceValue" EntitySet="PreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKPrefValuePreferenceID" Association="Self.FKPrefValuePreferenceID">
+            <End Role="Preference" EntitySet="Preference" />
+            <End Role="PreferenceValue" EntitySet="PreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKStateCountryID" Association="Self.FKStateCountryID">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserPrefValueFirmID" Association="Self.FKUserPrefValueFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="UserPreferenceValue" EntitySet="UserPreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserPrefValuePreferenceID" Association="Self.FKUserPrefValuePreferenceID">
+            <End Role="Preference" EntitySet="Preference" />
+            <End Role="UserPreferenceValue" EntitySet="UserPreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserPrefValueUserID" Association="Self.FKUserPrefValueUserID">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="UserPreferenceValue" EntitySet="UserPreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserRegistrationFirmID" Association="Self.FKUserRegistrationFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserRoleFirmID" Association="Self.FKUserRoleFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserRoleRoleID" Association="Self.FKUserRoleRoleID">
+            <End Role="ApplicationRole" EntitySet="ApplicationRole" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserRoleUserID" Association="Self.FKUserRoleUserID">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FKWamApplicationUserFirmID" Association="Self.FKWamApplicationUserFirmID">
+            <End Role="WamFirm" EntitySet="WamFirm" />
+            <End Role="WamApplicationUser" EntitySet="WamApplicationUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FirmManager_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplicationPackage">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Entitlement" Relationship="Self.ApplicationPackageEntitlement" FromRole="ApplicationPackage" ToRole="Entitlement" />
+        </EntityType>
+        <EntityType Name="ApplicationPackageEntitlementLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PackageID" Type="Int16" Nullable="false" />
+          <Property Name="EntitlementID" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" />
+          <Property Name="RoleName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleDisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int16" Nullable="false" />
+          <Property Name="ApplicationID" Type="Int16" Nullable="false" />
+          <Property Name="UserDefinedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="FirmAdminIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Firm" Relationship="Self.FKApplRoleFirmID" FromRole="ApplicationRole" ToRole="Firm" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FKUserRoleRoleID" FromRole="ApplicationRole" ToRole="UserRole" />
+          <NavigationProperty Name="Entitlement" Relationship="Self.ApplicationRoleEntitlement" FromRole="ApplicationRole" ToRole="Entitlement" />
+        </EntityType>
+        <EntityType Name="ApplicationRoleEntitlementLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="EntitlementID" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="LNASUserID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="FirstName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="UserStatus" Type="Int32" Nullable="false" />
+          <Property Name="SID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="WamUserPermIdUrn" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CodeValue" Relationship="Self.FK_ApplicationUser_UserStatus_CodeValue_CodeValueID" FromRole="ApplicationUser" ToRole="CodeValue" />
+          <NavigationProperty Name="ApplicationUserFeature" Relationship="Self.FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID" FromRole="ApplicationUser" ToRole="ApplicationUserFeature" />
+          <NavigationProperty Name="DigestSetting" Relationship="Self.FK_DigestSetting_UserID_ApplicationUser_UserID" FromRole="ApplicationUser" ToRole="DigestSetting" />
+          <NavigationProperty Name="UserPreferenceValue" Relationship="Self.FKUserPrefValueUserID" FromRole="ApplicationUser" ToRole="UserPreferenceValue" />
+          <NavigationProperty Name="Firm" Relationship="Self.FKUserRegistrationFirmID" FromRole="ApplicationUser" ToRole="Firm" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FKUserRoleUserID" FromRole="ApplicationUser" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="ApplicationUserFeature">
+          <Key>
+            <PropertyRef Name="ApplicationUserFeatureID" />
+          </Key>
+          <Property Name="ApplicationUserFeatureID" Type="Guid" Nullable="false" />
+          <Property Name="ApplicationUserID" Type="Guid" Nullable="false" />
+          <Property Name="FeatureID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID" FromRole="ApplicationUserFeature" ToRole="ApplicationUser" />
+        </EntityType>
+        <EntityType Name="ApplicationUserFeatureLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApplicationUserFeatureID" Type="Guid" Nullable="false" />
+          <Property Name="ApplicationUserID" Type="Guid" Nullable="false" />
+          <Property Name="FeatureID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUserLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="LNASUserID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="FirstName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="UserStatus" Type="Int32" />
+          <Property Name="SID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="WamUserPermIdUrn" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BillingCodeSet">
+          <Key>
+            <PropertyRef Name="BillingCodeSetID" />
+          </Key>
+          <Property Name="BillingCodeSetID" Type="Guid" Nullable="false" />
+          <Property Name="BillingCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillingCodeTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="BillingCodeDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BillingTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ActiveIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="CodeValue" Relationship="Self.FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID" FromRole="BillingCodeSet" ToRole="CodeValue" />
+          <NavigationProperty Name="CodeValue1" Relationship="Self.FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID" FromRole="BillingCodeSet" ToRole="CodeValue" />
+        </EntityType>
+        <EntityType Name="BillingCodeSetLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BillingCodeSetID" Type="Guid" Nullable="false" />
+          <Property Name="BillingCode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillingCodeTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="BillingCodeDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BillingTypeCode" Type="Int32" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ActiveIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="CodeType">
+          <Key>
+            <PropertyRef Name="CodeTypeID" />
+          </Key>
+          <Property Name="CodeTypeID" Type="Int16" Nullable="false" />
+          <Property Name="CodeTypeName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="CodeValue" Relationship="Self.FKCodeValueCodeTypeID" FromRole="CodeType" ToRole="CodeValue" />
+          <NavigationProperty Name="Preference" Relationship="Self.FKPreferenceLookupCode" FromRole="CodeType" ToRole="Preference" />
+        </EntityType>
+        <EntityType Name="CodeValue">
+          <Key>
+            <PropertyRef Name="CodeValueID" />
+          </Key>
+          <Property Name="CodeValueID" Type="Int32" Nullable="false" />
+          <Property Name="CodeTypeID" Type="Int16" Nullable="false" />
+          <Property Name="CodeValueName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeValueDisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConstantLookupValue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SequenceNumber" Type="Int16" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_ApplicationUser_UserStatus_CodeValue_CodeValueID" FromRole="CodeValue" ToRole="ApplicationUser" />
+          <NavigationProperty Name="BillingCodeSet" Relationship="Self.FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID" FromRole="CodeValue" ToRole="BillingCodeSet" />
+          <NavigationProperty Name="BillingCodeSet1" Relationship="Self.FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID" FromRole="CodeValue" ToRole="BillingCodeSet" />
+          <NavigationProperty Name="CodeType" Relationship="Self.FKCodeValueCodeTypeID" FromRole="CodeValue" ToRole="CodeType" />
+          <NavigationProperty Name="WamApplicationUser" Relationship="Self.FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID" FromRole="CodeValue" ToRole="WamApplicationUser" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int16" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryDisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="State" Relationship="Self.FKStateCountryID" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="DigestSetting">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="IsEmailEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HasSubscribedToTasksDue" Type="Boolean" Nullable="false" />
+          <Property Name="HasSubscribedToEvents" Type="Boolean" Nullable="false" />
+          <Property Name="HasSubscribedToMatterOverBudget" Type="Boolean" Nullable="false" />
+          <Property Name="TimeZone" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastRunMade" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="NextRunNeeded" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FrequencyType" Type="Int32" Nullable="false" />
+          <Property Name="DaysOfWeek" Type="Int32" Nullable="false" />
+          <Property Name="NotificationTime" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_DigestSetting_UserID_ApplicationUser_UserID" FromRole="DigestSetting" ToRole="ApplicationUser" />
+          <NavigationProperty Name="Firm" Relationship="Self.FK_DigestSetting_FirmID_Firm_FirmID" FromRole="DigestSetting" ToRole="Firm" />
+        </EntityType>
+        <EntityType Name="DigestSettingLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="IsEmailEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HasSubscribedToTasksDue" Type="Boolean" Nullable="false" />
+          <Property Name="HasSubscribedToEvents" Type="Boolean" Nullable="false" />
+          <Property Name="HasSubscribedToMatterOverBudget" Type="Boolean" Nullable="false" />
+          <Property Name="TimeZone" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastRunMade" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="NextRunNeeded" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="FrequencyType" Type="Int32" Nullable="false" />
+          <Property Name="DaysOfWeek" Type="Int32" Nullable="false" />
+          <Property Name="NotificationTime" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="Entitlement">
+          <Key>
+            <PropertyRef Name="EntitlementID" />
+          </Key>
+          <Property Name="EntitlementID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entitlement1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EntitlementPermission" Relationship="Self.FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID" FromRole="Entitlement" ToRole="EntitlementPermission" />
+          <NavigationProperty Name="ApplicationPackage" Relationship="Self.ApplicationPackageEntitlement" FromRole="Entitlement" ToRole="ApplicationPackage" />
+          <NavigationProperty Name="ApplicationRole" Relationship="Self.ApplicationRoleEntitlement" FromRole="Entitlement" ToRole="ApplicationRole" />
+        </EntityType>
+        <EntityType Name="EntitlementLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EntitlementID" Type="Int16" Nullable="false" />
+          <Property Name="Entitlement" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntitlementPermission">
+          <Key>
+            <PropertyRef Name="EntitlementID" />
+            <PropertyRef Name="CorePermissionID" />
+          </Key>
+          <Property Name="EntitlementID" Type="Int16" Nullable="false" />
+          <Property Name="CorePermissionID" Type="Guid" Nullable="false" />
+          <Property Name="AccessLevel" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Entitlement" Relationship="Self.FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID" FromRole="EntitlementPermission" ToRole="Entitlement" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="FirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LNASFirmID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Fax" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="OrderNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="BillingAccountId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PromoCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrialEndDate" Type="DateTime" Precision="3" />
+          <Property Name="ReferralSource" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Locale" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="ExtendedInfo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicationRole" Relationship="Self.FKApplRoleFirmID" FromRole="Firm" ToRole="ApplicationRole" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FKUserRegistrationFirmID" FromRole="Firm" ToRole="ApplicationUser" />
+          <NavigationProperty Name="DigestSetting" Relationship="Self.FK_DigestSetting_FirmID_Firm_FirmID" FromRole="Firm" ToRole="DigestSetting" />
+          <NavigationProperty Name="PreferenceValue" Relationship="Self.FKPrefValueFirmID" FromRole="Firm" ToRole="PreferenceValue" />
+          <NavigationProperty Name="UserPreferenceValue" Relationship="Self.FKUserPrefValueFirmID" FromRole="Firm" ToRole="UserPreferenceValue" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FKUserRoleFirmID" FromRole="Firm" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="FirmLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="LNASFirmID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Fax" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="OrderNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="BillingAccountId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PromoCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrialEndDate" Type="DateTime" Precision="3" />
+          <Property Name="ReferralSource" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Locale" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="ExtendedInfo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Preference">
+          <Key>
+            <PropertyRef Name="PreferenceID" />
+          </Key>
+          <Property Name="PreferenceID" Type="Int32" Nullable="false" />
+          <Property Name="PreferenceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PreferenceLookupCode" Type="Int16" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="CodeType" Relationship="Self.FKPreferenceLookupCode" FromRole="Preference" ToRole="CodeType" />
+          <NavigationProperty Name="PreferenceValue" Relationship="Self.FKPrefValuePreferenceID" FromRole="Preference" ToRole="PreferenceValue" />
+          <NavigationProperty Name="UserPreferenceValue" Relationship="Self.FKUserPrefValuePreferenceID" FromRole="Preference" ToRole="UserPreferenceValue" />
+        </EntityType>
+        <EntityType Name="PreferenceLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PreferenceID" Type="Int32" Nullable="false" />
+          <Property Name="PreferenceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PreferenceLookupCode" Type="Int16" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="PreferenceValue">
+          <Key>
+            <PropertyRef Name="PreferenceValueID" />
+          </Key>
+          <Property Name="PreferenceValueID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" />
+          <Property Name="PreferenceID" Type="Int32" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int16" Nullable="false" />
+          <Property Name="PreferenceValue1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Firm" Relationship="Self.FKPrefValueFirmID" FromRole="PreferenceValue" ToRole="Firm" />
+          <NavigationProperty Name="Preference" Relationship="Self.FKPrefValuePreferenceID" FromRole="PreferenceValue" ToRole="Preference" />
+        </EntityType>
+        <EntityType Name="PreferenceValueLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PreferenceValueID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" />
+          <Property Name="PreferenceID" Type="Int32" Nullable="false" />
+          <Property Name="PreferenceValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int16" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="RegionSetting">
+          <Key>
+            <PropertyRef Name="SettingKey" />
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="SettingKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="1028" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RegionSettingLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SettingKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="1028" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RolePermissionLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Guid" Nullable="false" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="PermissionID" Type="Int32" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" />
+          <Property Name="AccessValue" Type="Int16" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int16" Nullable="false" />
+          <Property Name="StateCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateDisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryID" Type="Int16" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Country" Relationship="Self.FKStateCountryID" FromRole="State" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserPreferenceValue">
+          <Key>
+            <PropertyRef Name="UserPreferenceID" />
+          </Key>
+          <Property Name="UserPreferenceID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="PreferenceID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int16" Nullable="false" />
+          <Property Name="PreferenceValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApplicationID" Type="Int16" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="PreferenceKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FKUserPrefValueUserID" FromRole="UserPreferenceValue" ToRole="ApplicationUser" />
+          <NavigationProperty Name="Firm" Relationship="Self.FKUserPrefValueFirmID" FromRole="UserPreferenceValue" ToRole="Firm" />
+          <NavigationProperty Name="Preference" Relationship="Self.FKUserPrefValuePreferenceID" FromRole="UserPreferenceValue" ToRole="Preference" />
+        </EntityType>
+        <EntityType Name="UserPreferenceValueLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPreferenceID" Type="Guid" Nullable="false" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="PreferenceID" Type="Int32" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="PreferenceValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int16" Nullable="false" />
+          <Property Name="ApplicationID" Type="Int16" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="ApplicationRole" Relationship="Self.FKUserRoleRoleID" FromRole="UserRole" ToRole="ApplicationRole" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FKUserRoleUserID" FromRole="UserRole" ToRole="ApplicationUser" />
+          <NavigationProperty Name="Firm" Relationship="Self.FKUserRoleFirmID" FromRole="UserRole" ToRole="Firm" />
+        </EntityType>
+        <EntityType Name="UserRoleLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogTypeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="VersionFeature">
+          <Key>
+            <PropertyRef Name="VersionFeatureID" />
+          </Key>
+          <Property Name="VersionFeatureID" Type="Guid" Nullable="false" />
+          <Property Name="ReleaseNumber" Type="Int32" Nullable="false" />
+          <Property Name="FeatureTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FeatureDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FeaturePath" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="LinkTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VersionRelease">
+          <Key>
+            <PropertyRef Name="VersionReleaseID" />
+          </Key>
+          <Property Name="VersionReleaseID" Type="Guid" Nullable="false" />
+          <Property Name="ReleaseNumber" Type="Int32" Nullable="false" />
+          <Property Name="ReleaseTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ReleaseNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentRelease" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="WamApplicationUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="WamUserPermId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserStatus" Type="Int32" Nullable="false" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="CodeValue" Relationship="Self.FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID" FromRole="WamApplicationUser" ToRole="CodeValue" />
+          <NavigationProperty Name="WamFirm" Relationship="Self.FKWamApplicationUserFirmID" FromRole="WamApplicationUser" ToRole="WamFirm" />
+        </EntityType>
+        <EntityType Name="WamFirm">
+          <Key>
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="FirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WamCustomerId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="RowChangeTimestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DeletedIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="WamApplicationUser" Relationship="Self.FKWamApplicationUserFirmID" FromRole="WamFirm" ToRole="WamApplicationUser" />
+        </EntityType>
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="Int64" Nullable="false" />
+          <Property Name="AppliedOn" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FKApplRoleFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+          <End Role="ApplicationRole" Type="Self.ApplicationRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="ApplicationRole">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserRoleRoleID">
+          <End Role="ApplicationRole" Type="Self.ApplicationRole" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationUser_UserStatus_CodeValue_CodeValueID">
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeValue">
+              <PropertyRef Name="CodeValueID" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="UserStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="ApplicationUserFeature" Type="Self.ApplicationUserFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ApplicationUserFeature">
+              <PropertyRef Name="ApplicationUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DigestSetting_UserID_ApplicationUser_UserID">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="DigestSetting" Type="Self.DigestSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="DigestSetting">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserPrefValueUserID">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="UserPreferenceValue" Type="Self.UserPreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserPreferenceValue">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserRegistrationFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserRoleUserID">
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID">
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="1" />
+          <End Role="BillingCodeSet" Type="Self.BillingCodeSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeValue">
+              <PropertyRef Name="CodeValueID" />
+            </Principal>
+            <Dependent Role="BillingCodeSet">
+              <PropertyRef Name="BillingCodeTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID">
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="1" />
+          <End Role="BillingCodeSet" Type="Self.BillingCodeSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeValue">
+              <PropertyRef Name="CodeValueID" />
+            </Principal>
+            <Dependent Role="BillingCodeSet">
+              <PropertyRef Name="BillingTypeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKCodeValueCodeTypeID">
+          <End Role="CodeType" Type="Self.CodeType" Multiplicity="1" />
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeType">
+              <PropertyRef Name="CodeTypeID" />
+            </Principal>
+            <Dependent Role="CodeValue">
+              <PropertyRef Name="CodeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPreferenceLookupCode">
+          <End Role="CodeType" Type="Self.CodeType" Multiplicity="0..1" />
+          <End Role="Preference" Type="Self.Preference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeType">
+              <PropertyRef Name="CodeTypeID" />
+            </Principal>
+            <Dependent Role="Preference">
+              <PropertyRef Name="PreferenceLookupCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID">
+          <End Role="CodeValue" Type="Self.CodeValue" Multiplicity="1" />
+          <End Role="WamApplicationUser" Type="Self.WamApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodeValue">
+              <PropertyRef Name="CodeValueID" />
+            </Principal>
+            <Dependent Role="WamApplicationUser">
+              <PropertyRef Name="UserStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKStateCountryID">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DigestSetting_FirmID_Firm_FirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="DigestSetting" Type="Self.DigestSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="DigestSetting">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID">
+          <End Role="Entitlement" Type="Self.Entitlement" Multiplicity="1" />
+          <End Role="EntitlementPermission" Type="Self.EntitlementPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entitlement">
+              <PropertyRef Name="EntitlementID" />
+            </Principal>
+            <Dependent Role="EntitlementPermission">
+              <PropertyRef Name="EntitlementID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPrefValueFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+          <End Role="PreferenceValue" Type="Self.PreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="PreferenceValue">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserPrefValueFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="UserPreferenceValue" Type="Self.UserPreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="UserPreferenceValue">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserRoleFirmID">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPrefValuePreferenceID">
+          <End Role="Preference" Type="Self.Preference" Multiplicity="1" />
+          <End Role="PreferenceValue" Type="Self.PreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preference">
+              <PropertyRef Name="PreferenceID" />
+            </Principal>
+            <Dependent Role="PreferenceValue">
+              <PropertyRef Name="PreferenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUserPrefValuePreferenceID">
+          <End Role="Preference" Type="Self.Preference" Multiplicity="1" />
+          <End Role="UserPreferenceValue" Type="Self.UserPreferenceValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preference">
+              <PropertyRef Name="PreferenceID" />
+            </Principal>
+            <Dependent Role="UserPreferenceValue">
+              <PropertyRef Name="PreferenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKWamApplicationUserFirmID">
+          <End Role="WamFirm" Type="Self.WamFirm" Multiplicity="1" />
+          <End Role="WamApplicationUser" Type="Self.WamApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WamFirm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="WamApplicationUser">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationPackageEntitlement">
+          <End Role="Entitlement" Type="Self.Entitlement" Multiplicity="*" />
+          <End Role="ApplicationPackage" Type="Self.ApplicationPackage" Multiplicity="*" />
+        </Association>
+        <Association Name="ApplicationRoleEntitlement">
+          <End Role="Entitlement" Type="Self.Entitlement" Multiplicity="*" />
+          <End Role="ApplicationRole" Type="Self.ApplicationRole" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="FirmManager_DevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicationPackage" EntityType="Self.ApplicationPackage" />
+          <EntitySet Name="ApplicationPackageEntitlementLog" EntityType="Self.ApplicationPackageEntitlementLog" />
+          <EntitySet Name="ApplicationRole" EntityType="Self.ApplicationRole" />
+          <EntitySet Name="ApplicationRoleEntitlementLog" EntityType="Self.ApplicationRoleEntitlementLog" />
+          <EntitySet Name="ApplicationUser" EntityType="Self.ApplicationUser" />
+          <EntitySet Name="ApplicationUserFeature" EntityType="Self.ApplicationUserFeature" />
+          <EntitySet Name="ApplicationUserFeatureLog" EntityType="Self.ApplicationUserFeatureLog" />
+          <EntitySet Name="ApplicationUserLog" EntityType="Self.ApplicationUserLog" />
+          <EntitySet Name="BillingCodeSet" EntityType="Self.BillingCodeSet" />
+          <EntitySet Name="BillingCodeSetLog" EntityType="Self.BillingCodeSetLog" />
+          <EntitySet Name="CodeType" EntityType="Self.CodeType" />
+          <EntitySet Name="CodeValue" EntityType="Self.CodeValue" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="DigestSetting" EntityType="Self.DigestSetting" />
+          <EntitySet Name="DigestSettingLog" EntityType="Self.DigestSettingLog" />
+          <EntitySet Name="Entitlement" EntityType="Self.Entitlement" />
+          <EntitySet Name="EntitlementLog" EntityType="Self.EntitlementLog" />
+          <EntitySet Name="EntitlementPermission" EntityType="Self.EntitlementPermission" />
+          <EntitySet Name="Firm" EntityType="Self.Firm" />
+          <EntitySet Name="FirmLog" EntityType="Self.FirmLog" />
+          <EntitySet Name="Preference" EntityType="Self.Preference" />
+          <EntitySet Name="PreferenceLog" EntityType="Self.PreferenceLog" />
+          <EntitySet Name="PreferenceValue" EntityType="Self.PreferenceValue" />
+          <EntitySet Name="PreferenceValueLog" EntityType="Self.PreferenceValueLog" />
+          <EntitySet Name="RegionSetting" EntityType="Self.RegionSetting" />
+          <EntitySet Name="RegionSettingLog" EntityType="Self.RegionSettingLog" />
+          <EntitySet Name="RolePermissionLog" EntityType="Self.RolePermissionLog" />
+          <EntitySet Name="State" EntityType="Self.State" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UserPreferenceValue" EntityType="Self.UserPreferenceValue" />
+          <EntitySet Name="UserPreferenceValueLog" EntityType="Self.UserPreferenceValueLog" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" />
+          <EntitySet Name="UserRoleLog" EntityType="Self.UserRoleLog" />
+          <EntitySet Name="VersionFeature" EntityType="Self.VersionFeature" />
+          <EntitySet Name="VersionRelease" EntityType="Self.VersionRelease" />
+          <EntitySet Name="WamApplicationUser" EntityType="Self.WamApplicationUser" />
+          <EntitySet Name="WamFirm" EntityType="Self.WamFirm" />
+          <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" />
+          <AssociationSet Name="FKApplRoleFirmID" Association="Self.FKApplRoleFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="ApplicationRole" EntitySet="ApplicationRole" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserRoleRoleID" Association="Self.FKUserRoleRoleID">
+            <End Role="ApplicationRole" EntitySet="ApplicationRole" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationUser_UserStatus_CodeValue_CodeValueID" Association="Self.FK_ApplicationUser_UserStatus_CodeValue_CodeValueID">
+            <End Role="CodeValue" EntitySet="CodeValue" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID" Association="Self.FK_ApplicationUserFeature_ApplicationUserID_ApplicationUser_UserID">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="ApplicationUserFeature" EntitySet="ApplicationUserFeature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DigestSetting_UserID_ApplicationUser_UserID" Association="Self.FK_DigestSetting_UserID_ApplicationUser_UserID">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="DigestSetting" EntitySet="DigestSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserPrefValueUserID" Association="Self.FKUserPrefValueUserID">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="UserPreferenceValue" EntitySet="UserPreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserRegistrationFirmID" Association="Self.FKUserRegistrationFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserRoleUserID" Association="Self.FKUserRoleUserID">
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID" Association="Self.FK_BillingCodeSet_BillingCodeTypeCode_CodeValue_CodeValueID">
+            <End Role="CodeValue" EntitySet="CodeValue" />
+            <End Role="BillingCodeSet" EntitySet="BillingCodeSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID" Association="Self.FK_BillingCodeSet_BillingTypeCode_CodeValue_CodeValueID">
+            <End Role="CodeValue" EntitySet="CodeValue" />
+            <End Role="BillingCodeSet" EntitySet="BillingCodeSet" />
+          </AssociationSet>
+          <AssociationSet Name="FKCodeValueCodeTypeID" Association="Self.FKCodeValueCodeTypeID">
+            <End Role="CodeType" EntitySet="CodeType" />
+            <End Role="CodeValue" EntitySet="CodeValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKPreferenceLookupCode" Association="Self.FKPreferenceLookupCode">
+            <End Role="CodeType" EntitySet="CodeType" />
+            <End Role="Preference" EntitySet="Preference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID" Association="Self.FK_WamApplicationUser_UserStatus_CodeValue_CodeValueID">
+            <End Role="CodeValue" EntitySet="CodeValue" />
+            <End Role="WamApplicationUser" EntitySet="WamApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FKStateCountryID" Association="Self.FKStateCountryID">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DigestSetting_FirmID_Firm_FirmID" Association="Self.FK_DigestSetting_FirmID_Firm_FirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="DigestSetting" EntitySet="DigestSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID" Association="Self.FK_EntitlementPermission_EntitlementID_Entitlement_EntitlementID">
+            <End Role="Entitlement" EntitySet="Entitlement" />
+            <End Role="EntitlementPermission" EntitySet="EntitlementPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FKPrefValueFirmID" Association="Self.FKPrefValueFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="PreferenceValue" EntitySet="PreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserPrefValueFirmID" Association="Self.FKUserPrefValueFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="UserPreferenceValue" EntitySet="UserPreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserRoleFirmID" Association="Self.FKUserRoleFirmID">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FKPrefValuePreferenceID" Association="Self.FKPrefValuePreferenceID">
+            <End Role="Preference" EntitySet="Preference" />
+            <End Role="PreferenceValue" EntitySet="PreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKUserPrefValuePreferenceID" Association="Self.FKUserPrefValuePreferenceID">
+            <End Role="Preference" EntitySet="Preference" />
+            <End Role="UserPreferenceValue" EntitySet="UserPreferenceValue" />
+          </AssociationSet>
+          <AssociationSet Name="FKWamApplicationUserFirmID" Association="Self.FKWamApplicationUserFirmID">
+            <End Role="WamFirm" EntitySet="WamFirm" />
+            <End Role="WamApplicationUser" EntitySet="WamApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationPackageEntitlement" Association="Self.ApplicationPackageEntitlement">
+            <End Role="Entitlement" EntitySet="Entitlement" />
+            <End Role="ApplicationPackage" EntitySet="ApplicationPackage" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationRoleEntitlement" Association="Self.ApplicationRoleEntitlement">
+            <End Role="Entitlement" EntitySet="Entitlement" />
+            <End Role="ApplicationRole" EntitySet="ApplicationRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FirmManager_DevModelStoreContainer" CdmEntityContainer="FirmManager_DevEntities">
+          <EntitySetMapping Name="ApplicationPackage">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.ApplicationPackage">
+              <MappingFragment StoreEntitySet="ApplicationPackage">
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="PackageCode" ColumnName="PackageCode" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationPackageEntitlementLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.ApplicationPackageEntitlementLog">
+              <MappingFragment StoreEntitySet="ApplicationPackageEntitlementLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="EntitlementID" ColumnName="EntitlementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationRole">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.ApplicationRole">
+              <MappingFragment StoreEntitySet="ApplicationRole">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDisplayName" ColumnName="RoleDisplayName" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="UserDefinedIndicator" ColumnName="UserDefinedIndicator" />
+                <ScalarProperty Name="FirmAdminIndicator" ColumnName="FirmAdminIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationRoleEntitlementLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.ApplicationRoleEntitlementLog">
+              <MappingFragment StoreEntitySet="ApplicationRoleEntitlementLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="EntitlementID" ColumnName="EntitlementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUser">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.ApplicationUser">
+              <MappingFragment StoreEntitySet="ApplicationUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="LNASUserID" ColumnName="LNASUserID" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="WamUserPermIdUrn" ColumnName="WamUserPermIdUrn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUserFeature">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.ApplicationUserFeature">
+              <MappingFragment StoreEntitySet="ApplicationUserFeature">
+                <ScalarProperty Name="ApplicationUserFeatureID" ColumnName="ApplicationUserFeatureID" />
+                <ScalarProperty Name="ApplicationUserID" ColumnName="ApplicationUserID" />
+                <ScalarProperty Name="FeatureID" ColumnName="FeatureID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUserFeatureLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.ApplicationUserFeatureLog">
+              <MappingFragment StoreEntitySet="ApplicationUserFeatureLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="ApplicationUserFeatureID" ColumnName="ApplicationUserFeatureID" />
+                <ScalarProperty Name="ApplicationUserID" ColumnName="ApplicationUserID" />
+                <ScalarProperty Name="FeatureID" ColumnName="FeatureID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUserLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.ApplicationUserLog">
+              <MappingFragment StoreEntitySet="ApplicationUserLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="LNASUserID" ColumnName="LNASUserID" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="WamUserPermIdUrn" ColumnName="WamUserPermIdUrn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillingCodeSet">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.BillingCodeSet">
+              <MappingFragment StoreEntitySet="BillingCodeSet">
+                <ScalarProperty Name="BillingCodeSetID" ColumnName="BillingCodeSetID" />
+                <ScalarProperty Name="BillingCode" ColumnName="BillingCode" />
+                <ScalarProperty Name="BillingCodeTypeCode" ColumnName="BillingCodeTypeCode" />
+                <ScalarProperty Name="BillingCodeDesc" ColumnName="BillingCodeDesc" />
+                <ScalarProperty Name="BillingTypeCode" ColumnName="BillingTypeCode" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ActiveIndicator" ColumnName="ActiveIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillingCodeSetLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.BillingCodeSetLog">
+              <MappingFragment StoreEntitySet="BillingCodeSetLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="BillingCodeSetID" ColumnName="BillingCodeSetID" />
+                <ScalarProperty Name="BillingCode" ColumnName="BillingCode" />
+                <ScalarProperty Name="BillingCodeTypeCode" ColumnName="BillingCodeTypeCode" />
+                <ScalarProperty Name="BillingCodeDesc" ColumnName="BillingCodeDesc" />
+                <ScalarProperty Name="BillingTypeCode" ColumnName="BillingTypeCode" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ActiveIndicator" ColumnName="ActiveIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodeType">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.CodeType">
+              <MappingFragment StoreEntitySet="CodeType">
+                <ScalarProperty Name="CodeTypeID" ColumnName="CodeTypeID" />
+                <ScalarProperty Name="CodeTypeName" ColumnName="CodeTypeName" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodeValue">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.CodeValue">
+              <MappingFragment StoreEntitySet="CodeValue">
+                <ScalarProperty Name="CodeValueID" ColumnName="CodeValueID" />
+                <ScalarProperty Name="CodeTypeID" ColumnName="CodeTypeID" />
+                <ScalarProperty Name="CodeValueName" ColumnName="CodeValueName" />
+                <ScalarProperty Name="CodeValueDisplayName" ColumnName="CodeValueDisplayName" />
+                <ScalarProperty Name="ConstantLookupValue" ColumnName="ConstantLookupValue" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryDisplayName" ColumnName="CountryDisplayName" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DigestSetting">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.DigestSetting">
+              <MappingFragment StoreEntitySet="DigestSetting">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="IsEmailEnabled" ColumnName="IsEmailEnabled" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="HasSubscribedToTasksDue" ColumnName="HasSubscribedToTasksDue" />
+                <ScalarProperty Name="HasSubscribedToEvents" ColumnName="HasSubscribedToEvents" />
+                <ScalarProperty Name="HasSubscribedToMatterOverBudget" ColumnName="HasSubscribedToMatterOverBudget" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="LastRunMade" ColumnName="LastRunMade" />
+                <ScalarProperty Name="NextRunNeeded" ColumnName="NextRunNeeded" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="FrequencyType" ColumnName="FrequencyType" />
+                <ScalarProperty Name="DaysOfWeek" ColumnName="DaysOfWeek" />
+                <ScalarProperty Name="NotificationTime" ColumnName="NotificationTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DigestSettingLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.DigestSettingLog">
+              <MappingFragment StoreEntitySet="DigestSettingLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="IsEmailEnabled" ColumnName="IsEmailEnabled" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="HasSubscribedToTasksDue" ColumnName="HasSubscribedToTasksDue" />
+                <ScalarProperty Name="HasSubscribedToEvents" ColumnName="HasSubscribedToEvents" />
+                <ScalarProperty Name="HasSubscribedToMatterOverBudget" ColumnName="HasSubscribedToMatterOverBudget" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="LastRunMade" ColumnName="LastRunMade" />
+                <ScalarProperty Name="NextRunNeeded" ColumnName="NextRunNeeded" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="FrequencyType" ColumnName="FrequencyType" />
+                <ScalarProperty Name="DaysOfWeek" ColumnName="DaysOfWeek" />
+                <ScalarProperty Name="NotificationTime" ColumnName="NotificationTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entitlement">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.Entitlement">
+              <MappingFragment StoreEntitySet="Entitlement">
+                <ScalarProperty Name="EntitlementID" ColumnName="EntitlementID" />
+                <ScalarProperty Name="Entitlement1" ColumnName="Entitlement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntitlementLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.EntitlementLog">
+              <MappingFragment StoreEntitySet="EntitlementLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="EntitlementID" ColumnName="EntitlementID" />
+                <ScalarProperty Name="Entitlement" ColumnName="Entitlement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntitlementPermission">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.EntitlementPermission">
+              <MappingFragment StoreEntitySet="EntitlementPermission">
+                <ScalarProperty Name="EntitlementID" ColumnName="EntitlementID" />
+                <ScalarProperty Name="CorePermissionID" ColumnName="CorePermissionID" />
+                <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firm">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.Firm">
+              <MappingFragment StoreEntitySet="Firm">
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="LNASFirmID" ColumnName="LNASFirmID" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="BillingAccountId" ColumnName="BillingAccountId" />
+                <ScalarProperty Name="PromoCode" ColumnName="PromoCode" />
+                <ScalarProperty Name="TrialEndDate" ColumnName="TrialEndDate" />
+                <ScalarProperty Name="ReferralSource" ColumnName="ReferralSource" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Locale" ColumnName="Locale" />
+                <ScalarProperty Name="ExtendedInfo" ColumnName="ExtendedInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FirmLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.FirmLog">
+              <MappingFragment StoreEntitySet="FirmLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="LNASFirmID" ColumnName="LNASFirmID" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="BillingAccountId" ColumnName="BillingAccountId" />
+                <ScalarProperty Name="PromoCode" ColumnName="PromoCode" />
+                <ScalarProperty Name="TrialEndDate" ColumnName="TrialEndDate" />
+                <ScalarProperty Name="ReferralSource" ColumnName="ReferralSource" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Locale" ColumnName="Locale" />
+                <ScalarProperty Name="ExtendedInfo" ColumnName="ExtendedInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preference">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.Preference">
+              <MappingFragment StoreEntitySet="Preference">
+                <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+                <ScalarProperty Name="PreferenceName" ColumnName="PreferenceName" />
+                <ScalarProperty Name="PreferenceLookupCode" ColumnName="PreferenceLookupCode" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferenceLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.PreferenceLog">
+              <MappingFragment StoreEntitySet="PreferenceLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+                <ScalarProperty Name="PreferenceName" ColumnName="PreferenceName" />
+                <ScalarProperty Name="PreferenceLookupCode" ColumnName="PreferenceLookupCode" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferenceValue">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.PreferenceValue">
+              <MappingFragment StoreEntitySet="PreferenceValue">
+                <ScalarProperty Name="PreferenceValueID" ColumnName="PreferenceValueID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="PreferenceValue1" ColumnName="PreferenceValue" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferenceValueLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.PreferenceValueLog">
+              <MappingFragment StoreEntitySet="PreferenceValueLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="PreferenceValueID" ColumnName="PreferenceValueID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+                <ScalarProperty Name="PreferenceValue" ColumnName="PreferenceValue" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegionSetting">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.RegionSetting">
+              <MappingFragment StoreEntitySet="RegionSetting">
+                <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegionSettingLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.RegionSettingLog">
+              <MappingFragment StoreEntitySet="RegionSettingLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="SettingKey" ColumnName="SettingKey" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolePermissionLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.RolePermissionLog">
+              <MappingFragment StoreEntitySet="RolePermissionLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="AccessValue" ColumnName="AccessValue" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateDisplayName" ColumnName="StateDisplayName" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPreferenceValue">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.UserPreferenceValue">
+              <MappingFragment StoreEntitySet="UserPreferenceValue">
+                <ScalarProperty Name="UserPreferenceID" ColumnName="UserPreferenceID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="PreferenceValue" ColumnName="PreferenceValue" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="PreferenceKey" ColumnName="PreferenceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPreferenceValueLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.UserPreferenceValueLog">
+              <MappingFragment StoreEntitySet="UserPreferenceValueLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="UserPreferenceID" ColumnName="UserPreferenceID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PreferenceID" ColumnName="PreferenceID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="PreferenceValue" ColumnName="PreferenceValue" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoleLog">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.UserRoleLog">
+              <MappingFragment StoreEntitySet="UserRoleLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="LogTimestamp" ColumnName="LogTimestamp" />
+                <ScalarProperty Name="LogTypeCode" ColumnName="LogTypeCode" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VersionFeature">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.VersionFeature">
+              <MappingFragment StoreEntitySet="VersionFeature">
+                <ScalarProperty Name="VersionFeatureID" ColumnName="VersionFeatureID" />
+                <ScalarProperty Name="ReleaseNumber" ColumnName="ReleaseNumber" />
+                <ScalarProperty Name="FeatureTitle" ColumnName="FeatureTitle" />
+                <ScalarProperty Name="FeatureDescription" ColumnName="FeatureDescription" />
+                <ScalarProperty Name="FeaturePath" ColumnName="FeaturePath" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="LinkTitle" ColumnName="LinkTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VersionRelease">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.VersionRelease">
+              <MappingFragment StoreEntitySet="VersionRelease">
+                <ScalarProperty Name="VersionReleaseID" ColumnName="VersionReleaseID" />
+                <ScalarProperty Name="ReleaseNumber" ColumnName="ReleaseNumber" />
+                <ScalarProperty Name="ReleaseTitle" ColumnName="ReleaseTitle" />
+                <ScalarProperty Name="ReleaseNotes" ColumnName="ReleaseNotes" />
+                <ScalarProperty Name="CurrentRelease" ColumnName="CurrentRelease" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WamApplicationUser">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.WamApplicationUser">
+              <MappingFragment StoreEntitySet="WamApplicationUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="WamUserPermId" ColumnName="WamUserPermId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WamFirm">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.WamFirm">
+              <MappingFragment StoreEntitySet="WamFirm">
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="WamCustomerId" ColumnName="WamCustomerId" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="RowChangeTimestamp" ColumnName="RowChangeTimestamp" />
+                <ScalarProperty Name="DeletedIndicator" ColumnName="DeletedIndicator" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VersionInfo">
+            <EntityTypeMapping TypeName="FirmManager_DevModel.VersionInfo">
+              <MappingFragment StoreEntitySet="VersionInfo">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="AppliedOn" ColumnName="AppliedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ApplicationPackageEntitlement" TypeName="FirmManager_DevModel.ApplicationPackageEntitlement" StoreEntitySet="ApplicationPackageEntitlement">
+            <EndProperty Name="Entitlement">
+              <ScalarProperty Name="EntitlementID" ColumnName="EntitlementID" />
+            </EndProperty>
+            <EndProperty Name="ApplicationPackage">
+              <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ApplicationRoleEntitlement" TypeName="FirmManager_DevModel.ApplicationRoleEntitlement" StoreEntitySet="ApplicationRoleEntitlement">
+            <EndProperty Name="Entitlement">
+              <ScalarProperty Name="EntitlementID" ColumnName="EntitlementID" />
+            </EndProperty>
+            <EndProperty Name="ApplicationRole">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
